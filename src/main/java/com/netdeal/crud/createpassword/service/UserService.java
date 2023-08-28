@@ -12,6 +12,7 @@ import com.netdeal.crud.createpassword.exception.NotFoundException;
 import com.netdeal.crud.createpassword.exception.ValidationException;
 import com.netdeal.crud.createpassword.model.User;
 import com.netdeal.crud.createpassword.repository.UserRepository;
+import com.netdeal.crud.createpassword.utils.PasswordStatus;
 
 @Service
 public class UserService {
@@ -24,6 +25,10 @@ public class UserService {
 			User obj = new User();
 			if(user.getName() != "" || user.getName() != null) {
 				obj.setName(user.getName());
+				obj.setPassword(user.getPassword());
+				var statusPassword = checkStatusPassword(user);
+				obj.setPasswordStatus(statusPassword);
+				obj.setScore(user.getScore());
 				repository.save(obj);
 			} else {
 				throw new ValidationException("Username null or empty");
@@ -82,6 +87,11 @@ public class UserService {
 		} catch (Exception e) {
 			throw new DatabaseException("An error occurred while finding the user by id:" + id, e);
 		}
+    }
+    
+    public PasswordStatus checkStatusPassword(User user) {
+    	PasswordStatus status = PasswordStatus.getStatus(user.getPasswordStatus());
+		return status;
     }
 
 }

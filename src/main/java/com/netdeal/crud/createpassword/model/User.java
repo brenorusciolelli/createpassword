@@ -3,6 +3,8 @@ package com.netdeal.crud.createpassword.model;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import com.netdeal.crud.createpassword.utils.PasswordStatus;
+
 import lombok.Data;
 
 @Document(collection = "usuario")
@@ -13,6 +15,7 @@ public class User {
     private String id;
     private String name;
     private String password;
-    private int score;
+    private String score;
+    private PasswordStatus passwordStatus;
     
 }

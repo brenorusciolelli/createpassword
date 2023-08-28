@@ -11,11 +11,15 @@
         <thead>
             <tr>
                 <th>Nome</th>
+                <th>Score</th>
+                <th>Label Score</th>
             </tr>
         </thead>
         <tbody>
             <tr th:each="user : ${list}">
                 <td th:text="${user.name}"></td>
+                <td th:text="${user.score}"></td>
+                <td th:text="${user.passwordStatus}"></td>
             </tr>
         </tbody>
     </table>
