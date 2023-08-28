@@ -1,6 +1,7 @@
 package com.netdeal.crud.createpassword.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +11,7 @@ import com.netdeal.crud.createpassword.exception.DatabaseException;
 import com.netdeal.crud.createpassword.exception.NotFoundException;
 import com.netdeal.crud.createpassword.exception.ValidationException;
 import com.netdeal.crud.createpassword.model.User;
-import com.netdeal.crud.repository.UserRepository;
+import com.netdeal.crud.createpassword.repository.UserRepository;
 
 @Service
 public class UserService {
@@ -66,6 +67,21 @@ public class UserService {
 	
     public List<User> readAllUsers() {
         return repository.findAll();
+    }
+    
+    public Optional<User> findUserById(String id ) {
+		try {
+			User existingUser = repository.findById(id).orElse(null);
+			
+	        if (existingUser != null) {
+	            Optional<User> res = repository.findById(id);
+	            return res;
+	        } else {
+	        	throw new NotFoundException("User with ID " + id + " not found");
+	        }
+		} catch (Exception e) {
+			throw new DatabaseException("An error occurred while finding the user by id:" + id, e);
+		}
     }
 
 }
