@@ -4,22 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de Usuários</title>
+    <link th:href="@{~/css/style.css}" rel="stylesheet" type="text/css">
 </head>
 <body>
     <div th:fragment="allusers" th:if="${list}">
     <table>
         <thead>
             <tr>
-                <th>Nome</th>
-                <th>Score</th>
-                <th>Label Score</th>
+                <th>Name</th>
+                <th>Score Value</th>
+                <th>Status Score</th>
             </tr>
         </thead>
         <tbody>
             <tr th:each="user : ${list}">
                 <td th:text="${user.name}"></td>
                 <td th:text="${user.score}"></td>
-                <td th:text="${user.passwordStatus}"></td>
+                <td th:text="${user.passwordStatus}" th:id="${user.passwordStatus}"></td>
             </tr>
         </tbody>
     </table>

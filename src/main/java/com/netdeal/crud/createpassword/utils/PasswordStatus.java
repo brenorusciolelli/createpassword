@@ -5,7 +5,6 @@ public enum PasswordStatus {
 	FORTE,
 	BOM,
 	MEDIANA,
-	FRACA,
 	RUIM;
 	
 	public static PasswordStatus getStatus(PasswordStatus passwordStatus) {

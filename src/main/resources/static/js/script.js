@@ -77,7 +77,7 @@ function evaluatePassword(password) {
     } else if (/[a-z]/.test(password) && /\d/.test(password)) {
         return "MEDIANA";
     } else {
-        return "FRACA";
+        return "RUIM";
     }
 }
 
