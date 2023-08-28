@@ -16,9 +16,8 @@ $(document).ready(function() {
             url: "/create",
             data: JSON.stringify(user),
             contentType: "application/json",
-            success: function(response) {
-                console.log(response)
-                alert("Usuário cadastrado com sucesso!");
+            success: function() {
+                getAllUsers();
             },
             error: function(error) {
                 alert("Erro ao cadastrar usuário.");
@@ -26,3 +25,20 @@ $(document).ready(function() {
         });
     });
 });
+
+
+function getAllUsers(){
+    $.ajax({
+        type: "GET",
+        url: "/listAll",
+        contentType: "application/json",
+        success: function(response) {
+        $('#user-table-container').html(response);
+        },  
+        error: function(error) {
+            alert("Erro ao listar usuários cadastrados.");
+        }
+    });
+}
+
+getAllUsers();

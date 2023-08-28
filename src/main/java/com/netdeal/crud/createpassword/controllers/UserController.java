@@ -33,6 +33,13 @@ public class UserController {
 		return new ResponseEntity<User>(HttpStatus.OK);
 	}
 	
+	@GetMapping("/listAll")
+	public String listAll(Model model) {
+	var response  = service.readAllUsers();
+	model.addAttribute("list", response);
+		return "list_user";
+	}
+	
 	@GetMapping("/")
 	public String home() {
 		return "index";
