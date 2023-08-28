@@ -2,13 +2,11 @@ package com.netdeal.crud.createpassword.utils;
 
 public enum PasswordStatus {
 	
-	FORTE,
-	BOM,
-	MEDIANA,
-	RUIM;
+	FORTE("FORTE"),
+	BOM("BOM"),
+	MEDIANA("MEDIANA"),
+	RUIM("RUIM");
 	
-	public static PasswordStatus getStatus(PasswordStatus passwordStatus) {
-		return passwordStatus;
+	PasswordStatus(String string) {
 	}
-
 }
