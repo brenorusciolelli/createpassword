@@ -11,8 +11,8 @@ public class User {
 	
     @Id
     private String id;
-    private String nome;
-    private String senha;
+    private String name;
+    private String password;
     private int score;
     
 }

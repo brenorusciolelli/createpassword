@@ -21,8 +21,8 @@ public class UserService {
 	public void createUser(User user) {
 		try {
 			User obj = new User();
-			if(user.getNome() != "" || user.getNome() != null) {
-				obj.setNome(user.getNome());
+			if(user.getName() != "" || user.getName() != null) {
+				obj.setName(user.getName());
 				repository.save(obj);
 			} else {
 				throw new ValidationException("Username null or empty");
