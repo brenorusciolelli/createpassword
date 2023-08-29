@@ -4,10 +4,13 @@ $(document).ready(function() {
         
         var nome = $("#nome").val();
         var senha = $("#senha").val();
+        var cargoSelect = document.getElementById("cargo");
+        var selectedValueCargo = cargoSelect.value;
         
         var user = {
             name: nome,
             password: senha,
+            positionValue: selectedValueCargo
         };
         
         $.ajax({

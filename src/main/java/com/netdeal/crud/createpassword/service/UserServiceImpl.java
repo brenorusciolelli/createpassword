@@ -31,6 +31,8 @@ public class UserServiceImpl implements UserService {
 				obj.setPassword(hashedPassword);
 				obj.setPasswordStatus(user.getPasswordStatus());
 				obj.setScore(user.getScore());
+				obj.setPosition(user.getPosition());
+				obj.setSuperior(user.getSuperior());
 				repository.save(obj);
 			} else {
 				throw new ValidationException("Username null or empty");

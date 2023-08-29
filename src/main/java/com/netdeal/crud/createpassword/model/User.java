@@ -18,4 +18,18 @@ public class User {
     private String score;
     private PasswordStatus passwordStatus;
     
+    private int positionValue;
+    private Position position;
+    private Position superior;
+    
+    public User(String name, Position position, Position superior) {
+        this.name = name;
+        this.position = position;
+        this.superior = superior;
+    }
+    
+    public User() {
+    	
+    }
+    
 }
