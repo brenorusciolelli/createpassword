@@ -1,7 +1,10 @@
 package com.netdeal.crud.createpassword.facade;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -31,6 +34,16 @@ public class UserFacade {
 		user.setScore(score);
 		user.setPasswordStatus(valueStatus);
 		service.createUser(user);
+	}
+	
+	public List<User> findUserById(String id) {
+		Optional<User> response = service.findUserById(id);
+		List<User> obj = new ArrayList<>();
+		if(response.isPresent()) {
+			User user = response.get();
+			obj.add(user);
+		}
+		return obj;
 	}
 	
 	public List<User> listAll() {

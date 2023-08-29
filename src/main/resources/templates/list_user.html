@@ -17,7 +17,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr th:each="user : ${list}">
+            <tr th:each="user : ${list}" th:id="${user.id}">
                 <td th:text="${user.name}"></td>
                 <td th:text="${user.score}"></td>
                 <td th:text="${user.passwordStatus}" th:id="${user.passwordStatus}"></td>

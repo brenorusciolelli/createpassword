@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -23,14 +24,14 @@ public class UserController {
 		facade.createUser(user);
 		return new ResponseEntity<User>(HttpStatus.CREATED);
 	}
-	/*
+	
 	@GetMapping("/id/{id}")
-	public ResponseEntity<User> findUserById(@RequestParam String id, Model model) {
-		var response = service.findUserById(id);
-		model.addAttribute("user", response);
-		return new ResponseEntity<User>(HttpStatus.OK);
+	public String findUserById(@PathVariable String id, Model model) {
+		var user = facade.findUserById(id);
+		model.addAttribute("user", user);
+		return "modal";
 	}
-*/
+
 	@GetMapping("/listAll")
 	public String listAll(Model model) {
 		var response = facade.listAll();

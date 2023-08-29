@@ -43,4 +43,42 @@ function getAllUsers(){
     });
 }
 
+function setClickTable(){
+const linhas = document.querySelectorAll(".table_colaboradores tr");
+
+linhas.forEach((linha) => {
+  linha.addEventListener("click", () => {
+    const id = linha.id;
+    $.ajax({
+        type: "GET",
+        url: "/id/" + id,
+        contentType: "application/json",
+        success: function(response) {
+        $('#modal_usuario').html(response);
+        closeUserModal();
+        },  
+        error: function(error) {
+            alert("Erro ao listar usuários cadastrados.");
+        }
+    });
+  });
+});
+}
+
 getAllUsers();
+
+setTimeout(function() { 
+    setClickTable();
+}, 2000);
+
+
+function closeUserModal(){
+const closeModal = document.querySelector(".close");
+let modalUser = document.getElementById('userModal');
+
+if(closeModal){
+    closeModal.addEventListener("click", () => {
+        modalUser.style.display = "none";
+      });
+}
+}
