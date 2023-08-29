@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de Usuários</title>
     <link th:href="@{~/css/style.css}" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link rel="stylesheet" href="path/to/fontawesome/css/all.min.css" />
 </head>
 <body>
     <div th:fragment="allusers" th:if="${list}">
@@ -14,13 +16,15 @@
                 <th>Name</th>
                 <th>Score Value</th>
                 <th>Status Score</th>
+                <th>Delete</th>
             </tr>
         </thead>
         <tbody>
-            <tr th:each="user : ${list}" th:id="${user.id}">
-                <td th:text="${user.name}"></td>
+            <tr th:each="user : ${list}">
+                <td class="clicktable" th:text="${user.name}" th:id="${user.id}"></td>
                 <td th:text="${user.score}"></td>
                 <td th:text="${user.passwordStatus}" th:id="${user.passwordStatus}"></td>
+                <td class="clickdelete" th:id="${user.id}"><i class="fa fa-trash" aria-hidden="true" id="icon-delete"></i></td>
             </tr>
         </tbody>
     </table>

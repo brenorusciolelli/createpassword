@@ -13,7 +13,7 @@ table {
     background-color: #f2f2f2;
   }
 
-  td{
+  .clicktable{
     cursor: pointer;
   }
   
@@ -75,4 +75,10 @@ table {
     display: flex;
     width: 460px;
     flex-direction: column;
+}
+
+#icon-delete{
+    display: flex;
+    justify-content: center;
+    color: #f12f2f;
 }

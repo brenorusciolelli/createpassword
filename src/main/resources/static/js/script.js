@@ -20,6 +20,7 @@ $(document).ready(function() {
             contentType: "application/json",
             success: function() {
                 getAllUsers();
+                window.location.reload(); 
             },
             error: function(error) {
                 alert("Erro ao cadastrar usuário.");
@@ -44,11 +45,54 @@ function getAllUsers(){
 }
 
 function setClickTable(){
-const linhas = document.querySelectorAll(".table_colaboradores tr");
+const td = document.querySelectorAll(".clicktable");
+td.forEach((td) => {
+td.addEventListener("click", () => {
+    id = td.id;
+    getUserById(id);
+})})
+};
 
-linhas.forEach((linha) => {
-  linha.addEventListener("click", () => {
-    const id = linha.id;
+function setClickDelete(){
+    const iconDelete = document.querySelectorAll(".clickdelete");
+    iconDelete.forEach((iconDelete) => {
+    iconDelete.addEventListener("click", () => {
+    id = iconDelete.id;
+    $.ajax({
+        type: "DELETE",
+        url: "/delete/" + id,
+        contentType: "application/json",
+        success: function(response) {
+            window.location.reload(); 
+            setClickTable();
+        },  
+        error: function(error) {
+            alert("Erro ao deletar o usuario.");
+        }
+    });
+    })})
+    };
+
+getAllUsers();
+
+setTimeout(function() { 
+    setClickTable();
+    setClickDelete();
+}, 1000);
+
+
+function closeUserModal(){
+const closeModal = document.querySelector(".close");
+let modalUser = document.getElementById('userModal');
+
+if(closeModal){
+    closeModal.addEventListener("click", () => {
+        modalUser.style.display = "none";
+      });
+}
+}
+
+function getUserById(id){
     $.ajax({
         type: "GET",
         url: "/id/" + id,
@@ -61,24 +105,4 @@ linhas.forEach((linha) => {
             alert("Erro ao listar usuários cadastrados.");
         }
     });
-  });
-});
-}
-
-getAllUsers();
-
-setTimeout(function() { 
-    setClickTable();
-}, 2000);
-
-
-function closeUserModal(){
-const closeModal = document.querySelector(".close");
-let modalUser = document.getElementById('userModal');
-
-if(closeModal){
-    closeModal.addEventListener("click", () => {
-        modalUser.style.display = "none";
-      });
-}
 }

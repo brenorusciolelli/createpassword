@@ -50,6 +50,10 @@ public class UserFacade {
 		return service.readAllUsers();
 	}
 	
+	public void delete(String id) {
+		 service.deleteUser(id);
+	}
+	
     public PasswordStatus evaluatePasswordStrength(String password) {
         if (password.length() < 6) {
             return PasswordStatus.RUIM;

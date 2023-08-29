@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -37,6 +38,12 @@ public class UserController {
 		var response = facade.listAll();
 		model.addAttribute("list", response);
 		return "list_user";
+	}
+	
+	@DeleteMapping("/delete/{id}")
+	public ResponseEntity<User> delete(@PathVariable String id) {
+		facade.delete(id);
+		return new ResponseEntity<User>(HttpStatus.OK);
 	}
 
 }
