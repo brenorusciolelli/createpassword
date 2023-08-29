@@ -12,15 +12,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import com.netdeal.crud.createpassword.facade.UserFacade;
 import com.netdeal.crud.createpassword.model.User;
 
-import jakarta.annotation.security.PermitAll;
-
 @Controller
 public class UserController {
 
 	@Autowired
 	UserFacade facade;
 
-	@PermitAll
 	@PostMapping("/create")
 	public ResponseEntity<User> createUserAndPassword(@RequestBody User user) {
 		facade.createUser(user);
@@ -39,11 +36,6 @@ public class UserController {
 		var response = facade.listAll();
 		model.addAttribute("list", response);
 		return "list_user";
-	}
-
-	@GetMapping("/")
-	public String home() {
-		return "index";
 	}
 
 }
