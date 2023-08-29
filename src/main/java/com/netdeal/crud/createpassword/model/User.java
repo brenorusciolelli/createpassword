@@ -3,8 +3,6 @@ package com.netdeal.crud.createpassword.model;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import com.netdeal.crud.createpassword.utils.PasswordStatus;
-
 import lombok.Data;
 
 @Document(collection = "usuario")

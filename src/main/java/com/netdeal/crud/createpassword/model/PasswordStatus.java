@@ -1,4 +1,4 @@
-package com.netdeal.crud.createpassword.utils;
+package com.netdeal.crud.createpassword.model;
 
 public enum PasswordStatus {
 	
